@@ -1,4 +1,5 @@
-import { fileURLToPath, URL } from 'node:url'
+import path from "path"
+
 import { defineConfig, loadEnv  } from 'vite'
 
 import vue from '@vitejs/plugin-vue'
@@ -10,13 +11,16 @@ const apiProtocol = env?.VITE_APP_API_PROTOCOL || 'http';
 const apiService = env?.VITE_APP_API_HOST || 'localhost';
 const apiPort = env?.VITE_APP_API_SERVICE_PORT || '80';
 
+import tailwind from "tailwindcss"
+import autoprefixer from "autoprefixer"
+
 
 export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+      '@': path.resolve(__dirname, './src'),
+    },
   },
   logLevel: 'info',
   server: {
@@ -27,7 +31,12 @@ export default defineConfig({
         rewrite: (path: string) => path.replace(/^\/api/, '')
       },
     },
-    port: 8080
+    port: 8080,
+  },
+  css: {
+    postcss: {
+      plugins: [tailwind(), autoprefixer()],
+    },
   },
   build: {
     chunkSizeWarningLimit: 1024,
