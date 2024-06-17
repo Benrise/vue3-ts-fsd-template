@@ -1,6 +1,10 @@
 {
   "name": "union-label-license",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=21",
+    "pnpm": ">=8"
+  },
   "private": true,
   "type": "module",
   "scripts": {
