@@ -14,8 +14,10 @@ build_application:
 
     only:
         - master
+    image: node:21 
     script:
-        - pnpm
+        - npm install -g pnpm
+        - pnpm install
         - pnpm build
 
 dev_stage:
@@ -36,11 +38,11 @@ dev_stage:
         - ls -la ~/.ssh/
         - ssh -v root@$DEV_HOST
         - cd dist
-        - ssh root@$DEV_HOST 'rm -r /union/dev-union-web-client; mkdir /union/1532-union-web-client;'
+        - ssh root@$DEV_HOST 'rm -r /union/1532-union-web-client; mkdir /union/1532-union-web-client;'
         - scp -r index.html root@$DEV_HOST:/union/1532-union-web-client
         - scp -r favicon.ico root@$DEV_HOST:/union/1532-union-web-client
         - scp -r js root@$DEV_HOST:/union/1532-union-web-client
-        - scp -r img root@$DEV_HOST:/union/1532-union-web-client
-        - scp -r css root@$DEV_HOST:/union/1532-union-web-client
-        - scp -r fonts root@$DEV_HOST:/union/1532-union-web-client
+        - if [ -d "img" ]; then scp -r img root@$DEV_HOST:/union/1532-union-web-client; fi
+        - if [ -d "css" ]; then scp -r css root@$DEV_HOST:/union/1532-union-web-client; fi
+        - if [ -d "fonts" ]; then scp -r fonts root@$DEV_HOST:/union/1532-union-web-client; fi
 
