@@ -18,14 +18,18 @@
   },
   "dependencies": {
     "@radix-icons/vue": "^1.0.0",
+    "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "install": "^0.13.0",
     "pinia": "^2.1.7",
+    "pnpm": "^9.3.0",
     "radix-vue": "^1.8.3",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",

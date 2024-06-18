@@ -37,6 +37,14 @@ export default defineConfig({
     postcss: {
       plugins: [tailwind(), autoprefixer()],
     },
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @import "@/app/styles/variables.scss"; 
+          @import "@/app/styles/mixins.scss";
+        `,
+      },
+    },
   },
   build: {
     chunkSizeWarningLimit: 1024,
