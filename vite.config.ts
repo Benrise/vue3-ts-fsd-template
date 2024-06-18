@@ -1,22 +1,23 @@
-import path from "path"
+import path from 'path';
 
-import { defineConfig, loadEnv  } from 'vite'
+import { defineConfig, loadEnv } from 'vite';
 
-import vue from '@vitejs/plugin-vue'
+import vue from '@vitejs/plugin-vue';
 
-const env = loadEnv('', process.cwd(), '')
+import Icons from 'unplugin-icons/vite';
+
+const env = loadEnv('', process.cwd(), '');
 
 const apiUrl = env?.VITE_APP_API_BASE_URL || '/api';
 const apiProtocol = env?.VITE_APP_API_PROTOCOL || 'http';
 const apiService = env?.VITE_APP_API_HOST || 'localhost';
 const apiPort = env?.VITE_APP_API_SERVICE_PORT || '80';
 
-import tailwind from "tailwindcss"
-import autoprefixer from "autoprefixer"
-
+import tailwind from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), Icons({ compiler: 'vue3' })],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -28,7 +29,7 @@ export default defineConfig({
       [apiUrl]: {
         target: `${apiProtocol}://${apiService}:${apiPort}/${apiUrl}`,
         changeOrigin: true,
-        rewrite: (path: string) => path.replace(/^\/api/, '')
+        rewrite: (path: string) => path.replace(/^\/api/, ''),
       },
     },
     port: 8080,
@@ -66,4 +67,4 @@ export default defineConfig({
       },
     },
   },
-})
+});
