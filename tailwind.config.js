@@ -7,9 +7,12 @@ module.exports = {
   prefix: '',
 
   content: [
-    './pages/**/*.{ts,tsx,vue}',
-    './components/**/*.{ts,tsx,vue}',
-    './app/**/*.{ts,tsx,vue}',
+    './1_app/**/*.{ts,tsx,vue}',
+    './2_pages/**/*.{ts,tsx,vue}',
+    './3_widgets/**/*.{ts,tsx,vue}',
+    './4_features/**/*.{ts,tsx,vue}',
+    './5_entities/**/*.{ts,tsx,vue}',
+    './6_shared/**/*.{ts,tsx,vue}',
     './src/**/*.{ts,tsx,vue}',
   ],
 
