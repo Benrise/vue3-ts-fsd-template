@@ -1,16 +1,14 @@
-.login-layout {
+.loginLayout {
     display: flex;
     flex-direction: row;
     width: 100%;
     flex: 1;
 }
-
-.default-layout {
+.defaultLayout {
     display: flex;
     flex-direction: column;
     min-height: 100%;
-
-    &__main {
-      flex: 1 1 auto;
-    }
+}
+defaultLayoutMain {
+  flex: 1 1 auto;
 }
